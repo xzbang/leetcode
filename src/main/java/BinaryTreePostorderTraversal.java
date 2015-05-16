@@ -22,9 +22,8 @@ import java.util.Stack;
  *
  * 解题思路：递归实现简单，以下实现非递归算法
  * 首先将根节点加入临时栈
- * 每次判断临时栈是否为空，如果不为空，则取出栈顶节点加入目标栈
+ * 每次判断临时栈是否为空，如果不为空，则取出栈顶节点插入结果表第一个
  * 然后对该节点的左右子树进行判断，将不为空的左右子节点“先左后右”加入临时栈
- * 最后对目标栈挨个出栈组成目标list
  *
  * Created by xzbang on 2015/5/15.
  */
@@ -43,22 +42,15 @@ public class BinaryTreePostorderTraversal {
         if(root==null)
             return result;
         Stack<TreeNode> transit = new Stack<TreeNode>();//临时栈，存储待解析子树的节点
-        Stack<TreeNode> finalStack = new Stack<TreeNode>();//目标栈，存储目标结果的倒序
         transit.push(root);
         while(!transit.isEmpty()){
             TreeNode node = transit.pop();
-            finalStack.push(node);
-
-            //先左后右进入临时栈，目标栈的结果则为先右后左，而最终结果则为先左后右
+            result.add(0,node.val);
+            //先左后右进入临时栈，出栈结果则为先右后左，而最终结果则为先左后右
             if(node.left!=null)
                 transit.push(node.left);
             if(node.right!=null)
                 transit.push(node.right);
-        }
-
-        while(!finalStack.isEmpty()){
-            TreeNode node = finalStack.pop();
-            result.add(node.val);
         }
         return result;
     }
