@@ -56,7 +56,7 @@ public class WordLadder {
                 if(getDis(dic,end)==1){
                     return nowDistance+2;
                 }else{
-                    for(int i = 0;i<26;i++){
+                    for(int i = 0;i<26;i++){//只用26个字母变换，减少复杂度
                         char ch = (char)('a'+i);
                         for(int j=0;j<len;j++){
                             String nowString = dic.substring(0,j)+ch+dic.substring(j+1);
