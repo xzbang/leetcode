@@ -4,6 +4,7 @@ import java.util.List;
 
 /**
  * https://leetcode.com/problems/n-queens/
+ * https://leetcode.com/problems/n-queens-ii/
  *
  *The n-queens puzzle is the problem of placing n queens on an n×n chessboard such that no two queens attack each other.
 
